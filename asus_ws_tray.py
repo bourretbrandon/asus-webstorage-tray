@@ -35,6 +35,7 @@ gi.require_version('AppIndicator3', '0.1')
 from gi.repository import Gtk, GObject, AppIndicator3
 
 def main():
+	os.system("./webstorage_main_process start")
 	global indicator
 	indicator = AppIndicator3.Indicator.new("asus_ws_tray", icon_status(), AppIndicator3.IndicatorCategory.APPLICATION_STATUS)
 	indicator.set_title('ASUS Webstorage')
@@ -56,6 +57,10 @@ def menu():
 	stop_command = Gtk.MenuItem('Stop Sync')
 	stop_command.connect('activate', stop_shell)
 	menu.append(stop_command)
+	
+	web_command = Gtk.MenuItem('Open Website')
+	web_command.connect('activate', open_site)
+	menu.append(web_command)
 	
 	stop_tray = Gtk.MenuItem('Exit Tray')
 	stop_tray.connect('activate', exit_tray)
@@ -83,6 +88,9 @@ def app_status():
   
 def start_shell(_):
 	os.system("./webstorage_main_process start")
+
+def open_site(_):
+	os.system("xdg-open https://www.asuswebstorage.com/navigate/a/#/index")
   
 def stop_shell(_):
 	os.system("./webstorage_main_process stop")
