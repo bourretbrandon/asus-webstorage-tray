@@ -13,7 +13,9 @@
  along with the bindings that make them work together.
 
  sudo apt install python3.6
+ 
  sudo apt install libgirepository1.0-dev gcc libcairo2-dev pkg-config python3-dev gir1.2-gtk-3.0
+ 
  sudo apt install pycairo PyGObject
 
  You may also need to tweak this Python script to point to different paths if you want to have your ASUS WebStorage apps
